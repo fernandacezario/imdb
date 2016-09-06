@@ -1,20 +1,23 @@
 Given(/^I'm on IMDb Top250 Home Page$/) do
   visit Top250Page
-	#visit 'http://www.imdb.com/chart/top'
 end
 
-Then(/^the page should display at least one movie in the list$/) do
-  expect(@current_page.movies_elements.size).to be >= 1000
+Then(/^the Top250 page should display at least one movie in the list$/) do
+  expect(@current_page.movies_elements.size).to be >= 1
+end
+
+Then(/^the Western page should display at least one movie in the list$/) do
+  expect(on(TopWestern).movies_elements.size).to be >= 1
 end
 
 When(/^I select sort by "([^"]*)"$/) do |sort_by|
-	select(sort_by, :from => 'sort')
+  on(Top250Page).sort sort_by
 end
 
 When(/^I select "([^"]*)" genre$/) do |genre|
-  click_on(genre)
+  on(Top250Page).movie_category genre
 end
 
 When(/^select sort by "([^"]*)"$/) do |sort_western|
-  click_on(sort_western)
+  on(TopWestern).sort sort_western
 end

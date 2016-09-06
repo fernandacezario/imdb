@@ -10,11 +10,8 @@ require 'gherkin'
 
 require 'require_all'
 
-require 'selenium-webdriver'
-
 require 'page-object'
 
 require_all 'lib'
 
 World(PageObject::PageFactory)
-
